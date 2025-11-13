@@ -35,7 +35,7 @@ Se realiza en la máquina virtual designada como Servidor.
     gateway [GATEWAY] # Ejemplo: 192.168.1.1 [cite: 19]
     ```
 
-2.  **Cambio de Hostname**/
+2.  **Cambio de Hostname**\
     Establece el nombre completo del servidor.
 
     ```bash
@@ -44,7 +44,7 @@ Se realiza en la máquina virtual designada como Servidor.
     ldap-server.example.com
     ```
 
-3.  **Modificación del archivo Hosts**/
+3.  **Modificación del archivo Hosts**\
     Asegúrate de que el servidor se reconozca a sí mismo correctamente.
 
     ```bash
@@ -62,14 +62,14 @@ Se realiza en la máquina virtual designada como Servidor.
     sudo apt update && sudo apt upgrade
     ```
 
-2.  **Instalación del servidor OpenLDAP (`slapd`) y utilidades**/
+2.  **Instalación del servidor OpenLDAP (`slapd`) y utilidades**\
     Durante la instalación, se te pedirá establecer la **contraseña del administrador** de LDAP.
     
     ```bash
     sudo apt install slapd ldap-utils -y
     ```
 
-3.  **Comprobación del servicio**/
+3.  **Comprobación del servicio**\
     Verifica que el demonio `slapd` está activo y en ejecución.
 
     ```bash
@@ -77,7 +77,7 @@ Se realiza en la máquina virtual designada como Servidor.
     # La salida debe mostrar: Active: active (running)
     ```
 
-4.  **Comprobación del puerto 389**/
+4.  **Comprobación del puerto 389**\
     Verifica que el puerto por defecto de LDAP está abierto.
 
     ```bash
@@ -86,7 +86,7 @@ Se realiza en la máquina virtual designada como Servidor.
     # La salida debe mostrar: 389/tcp open ldap 
     ```
 
-5.  **Visualización del contenido inicial (slapcat)**/
+5.  **Visualización del contenido inicial (slapcat)**\
     Muestra la estructura base generada por defecto tras la instalación (el Base DN por defecto será el que se configuró en el asistente de instalación).
 
     ```bash
@@ -96,7 +96,7 @@ Se realiza en la máquina virtual designada como Servidor.
 
 ### C. Creación de Estructura de Directorio
 
-1.  **Creación del fichero `base.ldif`**/
+1.  **Creación del fichero `base.ldif`**\
     Define las Unidades Organizativas (OU) básicas.
 
     ```bash
@@ -120,7 +120,7 @@ Se realiza en la máquina virtual designada como Servidor.
     objectClass: organizationalUnit
     ```
 
-2.  **Carga del fichero de estructura**/
+2.  **Carga del fichero de estructura**\
     Añade las OUs al directorio, se te pedirá la contraseña del administrador de LDAP.
 
     ```bash
@@ -128,7 +128,7 @@ Se realiza en la máquina virtual designada como Servidor.
     # El comando confirmará: adding new entry "ou=people,dc=example,dc=com"
     ```
 
-3.  **Verificación de la nueva estructura**/
+3.  **Verificación de la nueva estructura**\
     Busca los DNs recién creados.
 
     ```bash
@@ -161,7 +161,7 @@ Se realiza en la máquina virtual designada como Servidor.
     ldapadd -x -W -D cn=admin,dc=example,dc=com -f sistemas.ldif
     ```
 
-2.  **Generación de Contraseña Encriptada**/
+2.  **Generación de Contraseña Encriptada**\
     Para el usuario, necesitarás la contraseña encriptada (puedes usar SSHA o MD5).
 
     ```bash
@@ -170,7 +170,7 @@ Se realiza en la máquina virtual designada como Servidor.
     # Copia el hash resultante (Ej: {SSHA}XXXXXXXX)
     ```
 
-3.  **Creación del usuario (`usuario.ldif`)**/
+3.  **Creación del usuario (`usuario.ldif`)**\
     Crea el usuario `testuser` con UID y GID coincidentes.
 
     ```bash
@@ -203,7 +203,7 @@ Se realiza en la máquina virtual designada como Servidor.
     ldapadd -x -W -D cn=admin,dc=example,dc=com -f usuario.ldif
     ```
 
-4.  **Preparación del Directorio Home (Manual)**/
+4.  **Preparación del Directorio Home (Manual)**\
     Este paso asegura que el directorio exista en el servidor antes de la autenticación del cliente.
 
     ```bash
@@ -221,7 +221,7 @@ Se realiza en la máquina virtual designada como Cliente.
 
 ### A. Preparación de Red y Hostname
 
-1.  **Configuración de IP Estática**/
+1.  **Configuración de IP Estática**\
     Configura la red del cliente de forma similar al servidor, pero con su propia IP.
 
     ```bash
@@ -231,7 +231,7 @@ Se realiza en la máquina virtual designada como Cliente.
     # ...
     ```
 
-2.  **Cambio de Hostname**/
+2.  **Cambio de Hostname**\
     Establece el nombre del cliente.
 
     ```bash
@@ -240,7 +240,7 @@ Se realiza en la máquina virtual designada como Cliente.
     ldap-client.example.com
     ```
 
-3.  **Modificación del archivo Hosts**/
+3.  **Modificación del archivo Hosts**\
     Es **CRUCIAL** que el cliente sepa resolver el nombre del servidor.
 
     ```bash
@@ -262,7 +262,7 @@ Se realiza en la máquina virtual designada como Cliente.
     * **URI del servidor LDAP:** `ldap://ldap-server.example.com`
     * **Base de búsqueda:** `dc=example,dc=com`
 
-2.  **Configuración del archivo `ldap.conf` (Cliente)**/
+2.  **Configuración del archivo `ldap.conf` (Cliente)**\
     Asegúrate de que el archivo de configuración del cliente tiene el Base DN y el URI correctos.
 
     ```bash
@@ -272,7 +272,7 @@ Se realiza en la máquina virtual designada como Cliente.
     URI ldap://ldap-server.example.com
     ```
 
-3.  **Configuración de NSS (`/etc/nsswitch.conf`)**/
+3.  **Configuración de NSS (`/etc/nsswitch.conf`)**\
     Indica al sistema operativo que debe consultar LDAP para usuarios y grupos.
 
     ```bash
@@ -292,7 +292,7 @@ Se realiza en la máquina virtual designada como Cliente.
     networks:       files ldap
     ```
 
-4.  **Reiniciar servicios**/
+4.  **Reiniciar servicios**\
     Reinicia el servicio de caché de nombres.
 
     ```bash
@@ -302,7 +302,7 @@ Se realiza en la máquina virtual designada como Cliente.
     # sudo systemctl restart nslcd.service
     ```
 
-5.  **Verificación de Acceso a Usuario y Grupo**/
+5.  **Verificación de Acceso a Usuario y Grupo**\
     Comprueba que el sistema ya reconoce al usuario `testuser` y el grupo `sistemas`.
 
     ```bash
@@ -312,7 +312,7 @@ Se realiza en la máquina virtual designada como Cliente.
     # Resultado esperado: sistemas:*:2000:
     ```
 
-6.  **Configuración de PAM para Directorio Home**/
+6.  **Configuración de PAM para Directorio Home**\
     Asegura que, si el directorio no existe, se cree automáticamente al iniciar sesión (o cambiar de usuario) en el cliente.
 
     ```bash
