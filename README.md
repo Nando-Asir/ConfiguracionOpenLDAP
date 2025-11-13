@@ -17,7 +17,7 @@ Se realiza en la máquina virtual designada como Servidor.
 
 ### A. Preparación de Red y Hostname
 
-1.  **Configuración de IP Estática**/
+1.  **Configuración de IP Estática**\
     Modifica el archivo `/etc/network/interfaces` para asignar una IP estática al servidor.
 
     ```bash
