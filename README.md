@@ -30,9 +30,9 @@ Se realiza en la máquina virtual designada como Servidor.
     # /etc/network/interfaces
     auto enp0s3
     iface enp0s3 inet static
-    address [IP_SERVIDOR] # Ejemplo: 192.168.1.150 [cite: 17]
+    address [IP_SERVIDOR] # Ejemplo: 192.168.1.150
     netmask 255.255.255.0
-    gateway [GATEWAY] # Ejemplo: 192.168.1.1 [cite: 19]
+    gateway [GATEWAY] # Ejemplo: 192.168.1.1
     ```
 
 2.  **Cambio de Hostname**\
