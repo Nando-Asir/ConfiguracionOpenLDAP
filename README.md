@@ -54,6 +54,9 @@ Se realiza en la máquina virtual designada como Servidor.
     [IP_SERVIDOR] ldap-server.example.com ldap-server
     ```
 
+>[!WARNING]
+>Tras esta configuración, reiniciamos la Máquina Debian para que se guarden todos los cambios realizados.
+
 ### B. Instalación y Verificación de OpenLDAP
 
 1.  **Actualización del sistema**
@@ -250,6 +253,9 @@ Se realiza en la máquina virtual designada como Cliente.
     # Al final del archivo, añadir:
     [IP_SERVIDOR] ldap-server.example.com
     ```
+
+>[!WARNING]
+>Tras esta configuración, reiniciamos la Máquina Debian para que se guarden todos los cambios realizados.
 
 ### B. Instalación y Configuración del Cliente
 
