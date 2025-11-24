@@ -195,6 +195,8 @@ Se realiza en la máquina virtual designada como Servidor.
     userPassword: {SSHA}XXXXXXXX # Reemplazar con el hash generado
     homeDirectory: /home/testuser
     loginShell: /bin/bash
+    mail: testuser@gmail.com
+    jpegPhoto:
     ```
 
     Carga el usuario:
